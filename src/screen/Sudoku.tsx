@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {TextInput, View, Button, Text} from 'react-native';
+import {TextInput, View, Button} from 'react-native';
 
 type SudokuBoard = number[][];
 
