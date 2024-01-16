@@ -109,21 +109,27 @@ const Sudoku = () => {
             {row.map((number, columnIndex) => {
               cellIndex++;
               return (
-                <>
+                <React.Fragment key={columnIndex}>
                   <SudokuCell
                     key={columnIndex}
                     number={number}
                     visible={randomArray.includes(cellIndex)}
                   />
-                  {(columnIndex + 1) % 3 === 0 && (
-                    <View style={{width: 4, backgroundColor: 'black'}} />
+                  {columnIndex % 3 === 2 && (
+                    <View
+                      key={`divider-${columnIndex}`}
+                      style={{width: 4, backgroundColor: 'black'}}
+                    />
                   )}
-                </>
+                </React.Fragment>
               );
             })}
           </View>
           {rowIndex % 3 === 2 && (
-            <View style={{height: 4, backgroundColor: 'black'}} />
+            <View
+              key={`divider-${rowIndex}`}
+              style={{height: 4, backgroundColor: 'black'}}
+            />
           )}
         </View>
       ))}
