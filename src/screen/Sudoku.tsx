@@ -104,17 +104,27 @@ const Sudoku = () => {
       />
 
       {sudoku.map((row, rowIndex) => (
-        <View key={rowIndex} style={{flexDirection: 'row'}}>
-          {row.map((number, columnIndex) => {
-            cellIndex++;
-            return (
-              <SudokuCell
-                key={columnIndex}
-                number={number}
-                visible={randomArray.includes(cellIndex)}
-              />
-            );
-          })}
+        <View key={rowIndex}>
+          <View style={{flexDirection: 'row'}}>
+            {row.map((number, columnIndex) => {
+              cellIndex++;
+              return (
+                <>
+                  <SudokuCell
+                    key={columnIndex}
+                    number={number}
+                    visible={randomArray.includes(cellIndex)}
+                  />
+                  {(columnIndex + 1) % 3 === 0 && (
+                    <View style={{width: 4, backgroundColor: 'black'}} />
+                  )}
+                </>
+              );
+            })}
+          </View>
+          {rowIndex % 3 === 2 && (
+            <View style={{height: 4, backgroundColor: 'black'}} />
+          )}
         </View>
       ))}
     </View>
